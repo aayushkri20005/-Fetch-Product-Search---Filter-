@@ -37,10 +37,15 @@ const renderproducts=(products)=>{
     productcontainerele.innerHTML="";
     products.forEach(product=>{
         productcontainerele.innerHTML+=genarateproducts(product);
+        
     })
 }
 const filterhandler=(event)=>{
-const searchtext
+const searchtext=event.target.value.toLowerCase();
+const filterproduct=products.filter((product)=>{
+    return product.title.toLowerCase().includes(searchtext);
+});
+renderproducts(filterproduct);
 }
 searchInputele.addEventListener("keyup",filterhandler)
 renderproducts(products);
